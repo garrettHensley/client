@@ -22,6 +22,7 @@ WORKDIR /app
 
 COPY --from=build /app /app/
 
+RUN npm install
 RUN npm ci
 
 # Expose the port the app runs on
