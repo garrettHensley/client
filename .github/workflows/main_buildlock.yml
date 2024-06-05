@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'buildlock'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b7b47b58369a432f9060337b4db7d009 }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_95E1226C72ED465B8B88F2DAFAAB589C }}
         images: 'buildlockregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0e01b1bddcaf454b81dc5709b8880324 }}/client:${{ github.sha }}'
