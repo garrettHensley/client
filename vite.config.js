@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit()],
-	build: {
-		outDir: 'build' // Ensure this matches what you have in the Dockerfile
-	  }
+	// build: {
+	// 	outDir: 'build' // Ensure this matches what you have in the Dockerfile
+	//   }
 });

@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as the base image
-FROM node:21.7-alpine AS build
+FROM node:21.7.1 AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -16,14 +16,13 @@ COPY . .
 # Build the Svelte application
 RUN npm run build
 
-FROM node:21.7.1-alpine
+FROM node:21.7.1
 
 WORKDIR /app
 
 COPY --from=build /app /app/
 
-RUN npm install
-RUN npm ci
+RUN npm ci --only=production
 
 # Expose the port the app runs on
 EXPOSE 3000
