@@ -1,0 +1,47 @@
+name: Trigger auto deployment for buildlock
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/buildlock-AutoDeployTrigger-217969f0-1e0e-41f6-93cd-cbad2d5bba11.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+      contents: read #Required when GH token is used to authenticate with private repo
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.BUILDLOCK_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.BUILDLOCK_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.BUILDLOCK_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: buildlockregistry.azurecr.io
+          registryUsername: ${{ secrets.BUILDLOCK_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.BUILDLOCK_REGISTRY_PASSWORD }}
+          containerAppName: buildlock
+          resourceGroup: testers
+          imageToBuild: buildlockregistry.azurecr.io/buildlock:${{ github.sha }}
+          _buildArgumentsKey_: |
+            _buildArgumentsValues_
+
+
