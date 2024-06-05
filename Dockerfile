@@ -16,10 +16,25 @@ COPY . .
 # Build the Svelte application
 RUN npm run build
 
+FROM node:21.7.1
+
+WORKDIR /app
+
+COPY --from=build /app /app/
+
+RUN npm ci --only=production
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Command to run the application
+CMD ["node", "build/index.js"]
+
 # Use an official Nginx image as the base image for serving the application
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
+# FROM nginx:alpine
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+# COPY --from=build /app/build /usr/share/nginx/html
 
-EXPOSE 80
+# EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
