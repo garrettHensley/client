@@ -22,7 +22,7 @@ WORKDIR /app
 
 COPY --from=build /app /app/
 
-RUN npm ci --only=production
+RUN npm ci
 
 # Expose the port the app runs on
 EXPOSE 3000
