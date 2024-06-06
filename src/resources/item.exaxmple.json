@@ -1,0 +1,16 @@
+{
+    "id": 1,
+    "name": "Item 1",
+    "price": 100,
+    "addSpirit": 6,
+    "addHealth": 50,
+    "addWeaponDamage": 20,
+    "addFireRate": 15,
+    "addAmmo": 4,
+    "addSpiritShieldHealth": 20,
+    "addReloadTime": 10,
+    "bulletLifesteal": 5,
+    "spiritLifesteal": 5,
+    "regen": 2,
+    "bulletResist": 50
+}
