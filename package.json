@@ -26,6 +26,7 @@
 		"@sveltestrap/sveltestrap": "^6.2.7",
 		"flowbite": "^2.3.0",
 		"flowbite-svelte": "^0.46.1",
+		"jwt-decode": "^4.0.0",
 		"tailwind-merge": "^2.3.0"
 	}
 }
