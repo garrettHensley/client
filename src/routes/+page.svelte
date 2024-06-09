@@ -3,6 +3,5 @@
 </script>
 
 <main>
-    <h1>Login with Discord</h1>
-    <a href={loginUrl}>Login with Discord</a>
+    <h3>Start Building</h3>
 </main>

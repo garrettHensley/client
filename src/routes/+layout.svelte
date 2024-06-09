@@ -19,36 +19,25 @@
     Icon
   } from '@sveltestrap/sveltestrap';
 
+ export let data
+
   let isOpen = false;
   let loggedIn = false;
-  let username = '';
+  let userName = '';
+  let userId = '';
   
-  const decodeToken = () => {
-    const cookies = document.cookie.split(';');
-let jwtToken = '';
-console.log(document.cookie)
-for (const cookie of cookies) {
-    const [name, value] = cookie.trim().split('=');
-    console.log(name)
-    if (name === 'jwtToken') {
-        jwtToken = decodeURIComponent(value);
-        break;
-    }
-}
-  if (jwtToken) {
-    // Decode the JWT token to extract user information
-    const decodedToken = jwtDecode(jwtToken);
-    username = decodedToken.username; 
-  } else {
-    console.log('No JWT token found')
+  if (data.isLoggedIn) {
+    userName = data.userName;
+    userId = data.userId;
+    loggedIn = true;
   }
-  }
+
 
   function handleUpdate(event) {
     isOpen = event.detail.isOpen;
   }
 
-  onMount(decodeToken);
+  // onMount(decodeToken);
   </script>
   
   <svelte:head>
@@ -56,7 +45,14 @@ for (const cookie of cookies) {
 </svelte:head>
   
 <Navbar color="light" light expand="md" container="md">
-  <NavbarBrand href="/">Buildlock</NavbarBrand>
+  <NavbarBrand href="/">
+
+      <Button outline=true color=primary href="/build">
+        <Icon name="plus-circle-dotted" />
+        Build
+      </Button>
+
+  </NavbarBrand>
   <NavbarToggler on:click={() => (isOpen = !isOpen)} />
     <Nav navbar>
       <NavItem>
@@ -65,22 +61,23 @@ for (const cookie of cookies) {
       <NavItem>
         <NavLink href="#components/">My Stuff</NavLink>
       </NavItem>
-      <NavItem>
-        <NavLink href="https://github.com/sveltestrap/sveltestrap">GitHub</NavLink>
-      </NavItem>
-      <NavItem>
-        <Button outline=true color=primary href="/build/">
-          <Icon name="plus-circle-dotted" />
-          Build
-        </Button>
-      </NavItem>
+      {#if loggedIn}
+        <NavItem>
+          <NavLink href="/profile/{userId}">{userName}</NavLink>
+        </NavItem>
+      
+        {:else}
+          <NavItem>
+            <NavLink href="https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A7108%2Fauth%2Fdiscord-callback&scope=identify">Sign In</NavLink>
+          </NavItem>
+      {/if}
+      
     </Nav>
 </Navbar>
 <div class="container-fluid mt-2">
   <slot />
 </div>
 
-fuck
   <style>
     @import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css';
   </style>
