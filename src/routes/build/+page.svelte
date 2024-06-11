@@ -11,6 +11,7 @@
         FormGroup,
         Input,
         Badge,
+        Icon,
     } from "@sveltestrap/sveltestrap";
 
     let items = [];
@@ -111,24 +112,29 @@
                     <TabPane tabId="vitality" tab="Vitality" active></TabPane>
                     <TabPane tabId="spirit" tab="Spirit" active></TabPane>
                 </TabContent>
-                <div class=row>
-                    <ul>
-                        <li>
-                            <h5>Category Name</h5>
+                <div class="row">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <h5>Category Name</h5>
+                                    <div>
+                                        <Button color="danger">X</Button>
+                                    </div>
+                                </div>
+                            </div>
                             <div>
                                 <em>
                                     Drag items here to add them to the category
                                 </em>
                             </div>
-                            <div class=row>
-                                <div class=col>
-                                    <Button color="primary">Primary</Button>
-                                    <Button color="danger">Delete Category</Button>
-                                </div>
-                            </div>
                         </li>
                     </ul>
-
+                    <div class='mt-2'>
+                        <Button color="primary">
+                            <Icon name="plus-circle-dotted" />
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>
