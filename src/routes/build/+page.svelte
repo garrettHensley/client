@@ -19,7 +19,14 @@
 
     const build = {
         hero: null,
-        items: [],
+        items: [
+        ],
+        categories: [
+            {
+                name: "",
+                items: [],
+            }
+        ],
         buildName: "",
         buildId: null,
         description: "",
@@ -114,21 +121,25 @@
                 </TabContent>
                 <div class="row">
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <div>
-                                <div class="d-flex justify-content-between">
-                                    <h5>Category Name</h5>
+                        {#each build.categories as category}
+                            <li class="list-group-item">
+                                <div class="pb-4 rounded shadow my-2">
                                     <div>
-                                        <Button color="danger">X</Button>
+                                        <div class="d-flex justify-content-between">
+                                            <Input type="text" placeholder="Category" bind:value={category.name} />
+                                            <div>
+                                                <Button color="danger">X</Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-2 py-3">
+                                        <em>
+                                            Drag items here to add them to the category
+                                        </em>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <em>
-                                    Drag items here to add them to the category
-                                </em>
-                            </div>
-                        </li>
+                            </li>
+                        {/each}
                     </ul>
                     <div class='mt-2'>
                         <Button color="primary">
