@@ -1,8 +1,10 @@
 import { jwtDecode } from "jwt-decode";
 
-export function load({ cookies}) {
+export async function load({ cookies}) {
 	const token = cookies.get('jwtToken');
 	const isLoggedIn = false;
+
+
 
 	if (token) {
 		const { unique_name, userId } = jwtDecode(token);
@@ -11,7 +13,7 @@ export function load({ cookies}) {
 			jwtToken: token,
 			isLoggedIn: true,
 			userName: unique_name,
-			userId
+			userId,
 		};
 	}
 

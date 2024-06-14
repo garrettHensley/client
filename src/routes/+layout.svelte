@@ -32,7 +32,10 @@
     loggedIn = true;
   }
 
-
+  function testThing() {
+    // data.testCookie()
+    // console.log(data)
+  }
   function handleUpdate(event) {
     isOpen = event.detail.isOpen;
   }
@@ -46,7 +49,7 @@
   
 <Navbar color="light" light expand="md" container="md">
   <NavbarBrand href="/">
-
+    <button on:click={testThing}>test cookie</button>
       <Button outline=true color=primary href="/build">
         <Icon name="plus-circle-dotted" />
         Build
@@ -68,7 +71,7 @@
       
         {:else}
           <NavItem>
-            <NavLink href="https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A7108%2Fauth%2Fdiscord-callback&scope=identify">Sign In</NavLink>
+            <NavLink href="https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A32770%2Fauth%2Fdiscord-callback&scope=identify">Sign In</NavLink>
           </NavItem>
       {/if}
       
