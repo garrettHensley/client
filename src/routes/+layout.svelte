@@ -26,7 +26,7 @@
   let userName = '';
   let userId = '';
   const loginUrl = data.loginUrl;
- 
+  console.log(data)
   
   if (data.isLoggedIn) {
     userName = data.userName;

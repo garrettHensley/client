@@ -20,5 +20,6 @@ export async function load({ cookies}) {
 	return {
 		isLoggedIn: false,
 		loginUrl,
+		jwtToken: token,
 	};
 }
