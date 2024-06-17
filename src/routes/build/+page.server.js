@@ -1,7 +1,11 @@
 export async function load({ fetch }) {
+
+    const api = import.meta.env.VITE_API_URL
+
     const items = await (async function(){
+
         try {
-            const res = await fetch('https://buildlockapi.azurewebsites.net/api/Store/GetItems')
+            const res = await fetch(`${api}/Store/GetItems`)
             return await res.json()
         } catch (e) {
             console.log(e)
@@ -10,7 +14,7 @@ export async function load({ fetch }) {
     })()
     const heroes = await (async function(){
         try {
-            const res = await fetch('https://buildlockapi.azurewebsites.net/api/Heroes/GetAll')
+            const res = await fetch(`${api}/Heroes/GetAll`)
             return await res.json()
         } catch (e) {
             console.log(e)
@@ -18,11 +22,7 @@ export async function load({ fetch }) {
         return []
     })()
 
-    // console.log(import.meta.env.VITE_SOME_KEY)
 
-
-    //const res = await fetch('https://localhost:7108/api/Heroes/GetAll')
-    //const heroes = await res.json()
 
     return {
         items,

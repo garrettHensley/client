@@ -3,9 +3,8 @@ import { jwtDecode } from "jwt-decode";
 export async function load({ cookies}) {
 	const token = cookies.get('jwtToken');
 	const isLoggedIn = false;
-
-
-
+	const loginUrl = `${import.meta.env.VITE_AUTH_URL}/AuthMe`
+	// console.log('token', cookies.getAll())
 	if (token) {
 		const { unique_name, userId } = jwtDecode(token);
 
@@ -14,10 +13,12 @@ export async function load({ cookies}) {
 			isLoggedIn: true,
 			userName: unique_name,
 			userId,
+			loginUrl,
 		};
 	}
 
 	return {
-		isLoggedIn: false
+		isLoggedIn: false,
+		loginUrl,
 	};
 }

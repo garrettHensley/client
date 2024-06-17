@@ -21,4 +21,8 @@ export default defineConfig({
 });
 // console.log('VITE_APP_API_URL', import.meta.env.VITE_API_URL.toString());
 console.log('url is', process.env.VITE_API_URL)
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+if (process.env.NODE_ENV === 'development') {
+	process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+}
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';

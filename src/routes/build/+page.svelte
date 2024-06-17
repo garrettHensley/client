@@ -38,12 +38,10 @@
     };
 
     if (data.items.length > 0) {
-        console.log(data.items);
         items = data.items;
     }
 
     if (data.heroes.length > 0) {
-        console.log(data.heroes);
         heroes = data.heroes;
     }
 
@@ -101,7 +99,6 @@
             categories: categories
         }
 
-        console.log(build)
 
         await fetch("/api/Build/Save", {
             method: "POST",
@@ -121,7 +118,6 @@
 
     function initiateCategories() {
         storedBuild.categories.forEach((category) => {
-            console.log(category)
             new Sortable(document.getElementById(category.id).querySelector('#item-list'), {
                 group: "shared",
                 animation: 150,

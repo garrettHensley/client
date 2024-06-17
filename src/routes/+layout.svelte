@@ -25,6 +25,8 @@
   let loggedIn = false;
   let userName = '';
   let userId = '';
+  const loginUrl = data.loginUrl;
+ 
   
   if (data.isLoggedIn) {
     userName = data.userName;
@@ -49,7 +51,7 @@
   
 <Navbar color="light" light expand="md" container="md">
   <NavbarBrand href="/">
-    <button on:click={testThing}>test cookie</button>
+    <button on:click={testThing}>welcome</button>
       <Button outline=true color=primary href="/build">
         <Icon name="plus-circle-dotted" />
         Build
@@ -71,7 +73,7 @@
       
         {:else}
           <NavItem>
-            <NavLink href="https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A32770%2Fauth%2Fdiscord-callback&scope=identify">Sign In</NavLink>
+            <NavLink href="{data.loginUrl}">Sign In</NavLink>
           </NavItem>
       {/if}
       
