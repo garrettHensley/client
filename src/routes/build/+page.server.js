@@ -18,6 +18,8 @@ export async function load({ fetch }) {
         return []
     })()
 
+    // console.log(import.meta.env.VITE_SOME_KEY)
+
 
     //const res = await fetch('https://localhost:7108/api/Heroes/GetAll')
     //const heroes = await res.json()
