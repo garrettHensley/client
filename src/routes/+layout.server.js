@@ -4,6 +4,7 @@ export async function load({ cookies}) {
 	const token = cookies.get('jwtToken');
 	const isLoggedIn = false;
 	const loginUrl = `${import.meta.env.VITE_AUTH_URL}/AuthMe`
+	const testUrl = `${import.meta.env.VITE_AUTH_URL}/TestMe`
 	// console.log('token', cookies.getAll())
 	if (token) {
 		const { unique_name, userId } = jwtDecode(token);
@@ -14,6 +15,8 @@ export async function load({ cookies}) {
 			userName: unique_name,
 			userId,
 			loginUrl,
+		testUrl,
+
 		};
 	}
 
@@ -21,5 +24,6 @@ export async function load({ cookies}) {
 		isLoggedIn: false,
 		loginUrl,
 		jwtToken: token,
+		testUrl,
 	};
 }

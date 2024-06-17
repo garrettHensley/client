@@ -48,7 +48,7 @@
   <svelte:head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </svelte:head>
-  
+  <a href="{data.testUrl}">test button test me</a>
 <Navbar color="light" light expand="md" container="md">
   <NavbarBrand href="/">
     <button on:click={testThing}>welcome</button>
