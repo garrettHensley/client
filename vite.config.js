@@ -9,7 +9,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 		  '^/api': {
-			target: process.env.VITE_API_URL, // Your API server URL
+			target: "https://buildlockapi.azurewebsites.net/", // Your API server URL
 			changeOrigin: true,
 			secure: false,
 		  },
