@@ -73,7 +73,7 @@
       
         {:else}
           <NavItem>
-            <NavLink href="{data.loginUrl}">Sign In</NavLink>
+            <NavLink href="{loginUrl}">Sign In</NavLink>
           </NavItem>
       {/if}
       

@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 export async function load({ cookies}) {
 	const token = cookies.get('jwtToken');
 	const isLoggedIn = false;
-	const loginUrl = `${import.meta.env.VITE_AUTH_URL}/AuthMe`
+	const loginUrl = import.meta.env.VITE_REDIRECT_URI
 	const testUrl = `${import.meta.env.VITE_AUTH_URL}/TestMe`
 	// console.log('token', cookies.getAll())
 	if (token) {
@@ -15,7 +15,7 @@ export async function load({ cookies}) {
 			userName: unique_name,
 			userId,
 			loginUrl,
-		testUrl,
+			testUrl,
 
 		};
 	}
