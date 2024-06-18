@@ -121,9 +121,6 @@
             new Sortable(document.getElementById(category.id).querySelector('#item-list'), {
                 group: "shared",
                 animation: 150,
-                // onAdd: (event) => {
-                    
-                // }
             });
 
         });

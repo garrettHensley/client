@@ -5,6 +5,7 @@ export async function load({ cookies}) {
 	const isLoggedIn = false;
 	const loginUrl = import.meta.env.VITE_REDIRECT_URI
 	const testUrl = `${import.meta.env.VITE_AUTH_URL}/TestMe`
+	const authUrl = `${import.meta.env.VITE_AUTH_URL}/auth/discord-callback`
 	// console.log('token', cookies.getAll())
 	if (token) {
 		const { unique_name, userId } = jwtDecode(token);
@@ -25,5 +26,6 @@ export async function load({ cookies}) {
 		loginUrl,
 		jwtToken: token,
 		testUrl,
+		authUrl,
 	};
 }

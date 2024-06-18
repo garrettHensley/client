@@ -1,5 +1,6 @@
 <script>
     import "../app.css";
+    import { page } from '$app/stores';
     import { jwtDecode } from 'jwt-decode';
     import { Styles } from '@sveltestrap/sveltestrap';
     import { onMount } from 'svelte';
@@ -26,6 +27,8 @@
   let userName = '';
   let userId = '';
   const loginUrl = data.loginUrl;
+  
+  const code = $page.url.searchParams.get('code')
   console.log(data)
   
   if (data.isLoggedIn) {
@@ -42,7 +45,25 @@
     isOpen = event.detail.isOpen;
   }
 
+  const authme = async () => {
+    console.log('autthing')
+    if (code) {
+      console.log('has code')
+
+      const response = await fetch(`${import.meta.env.VITE_AUTH_URL}/discord-callback?code=${code}`);
+      const dat = await response.json();
+      console.log(dat)
+      // if (data.success) {
+      //   console.log('success')
+      // }
+    }
+  }
+
+  onMount(authme);
+
   // onMount(decodeToken);
+
+
   </script>
   
   <svelte:head>
