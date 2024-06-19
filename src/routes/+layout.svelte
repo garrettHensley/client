@@ -50,6 +50,8 @@
   }
 
   const testAuth = async () => {
+    console.log('testing auth')
+    console.log(data.testUrl)
     const something = await fetch(data.testUrl, {
               method: 'GET',
               credentials: 'include',
