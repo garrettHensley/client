@@ -6,15 +6,15 @@ dotenv.config();
 
 export default defineConfig({
 	plugins: [sveltekit()],
-	server: {
-		proxy: {
-		  '^/api': {
-			target: "https://buildlockapi.azurewebsites.net/", // Your API server URL
-			changeOrigin: true,
-			secure: false,
-		  },
-		}
-	}
+	// server: {
+	// 	proxy: {
+	// 	  '^/api': {
+	// 		target: "https://buildlockapi.azurewebsites.net/", // Your API server URL
+	// 		changeOrigin: true,
+	// 		secure: false,
+	// 	  },
+	// 	}
+	// }
 	// build: {
 	// 	outDir: 'build' // Ensure this matches what you have in the Dockerfile
 	//   }
