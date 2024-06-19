@@ -45,6 +45,10 @@
     isOpen = event.detail.isOpen;
   }
 
+  function login() {
+    window.location.href = data.loginUrl;
+  }
+
   const testAuth = async () => {
     const something = await fetch('https://localhost:32778/auth/TestMe', {
               method: 'GET',
