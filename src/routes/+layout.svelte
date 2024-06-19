@@ -73,7 +73,7 @@
   //     });
 
       if (code) {
-        const url = 'https://localhost:32778/auth/discord-callback';
+        const url = data.authUrl;
         // window.location.href = url + '?code=' + code;
         const someting = await fetch(url+ '?code=' + code)
         const dat = await someting.json()
@@ -151,7 +151,7 @@
       
         {:else}
           <NavItem>
-            <NavLink href="https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A32778%2Fauth%2Fdiscord-callback&scope=identify">Sign In</NavLink>
+            <NavLink href="{loginUrl}">Sign In</NavLink>
           </NavItem>
       {/if}
       
