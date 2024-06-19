@@ -50,7 +50,7 @@
   }
 
   const testAuth = async () => {
-    const something = await fetch('https://localhost:32778/auth/TestMe', {
+    const something = await fetch(data.testUrl, {
               method: 'GET',
               credentials: 'include',
             })
