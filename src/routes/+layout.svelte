@@ -52,10 +52,15 @@
 
       const response = await fetch(`${import.meta.env.VITE_AUTH_URL}/discord-callback?code=${code}`);
       const dat = await response.json();
+
+    }
+    else {
+      const reponse = await fetch(`https://localhost:32774/auth/TestMe`, {
+        method: 'GET',
+        credentials: 'include',
+      })
+      const dat = await response.json();
       console.log(dat)
-      // if (data.success) {
-      //   console.log('success')
-      // }
     }
   }
 
