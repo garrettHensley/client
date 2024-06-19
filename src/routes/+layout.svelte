@@ -55,7 +55,7 @@
 
     }
     else {
-      const reponse = await fetch(`https://localhost:32774/auth/TestMe`, {
+      const reponse = await fetch(`${data.testUrl}`, {
         method: 'GET',
         credentials: 'include',
       })
