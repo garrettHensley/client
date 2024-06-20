@@ -152,9 +152,18 @@
         </NavItem>
       
         {:else}
-          <NavItem>
-            <NavLink href="{loginUrl}">Sign In</NavLink>
-          </NavItem>
+          <div>
+            <p>
+              <a href="{loginUrl}">{loginUrl}</a>
+
+            </p>
+            <p>
+              <a href="https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A32774%2Fauth%2Fdiscord-callback&scope=identify">
+                https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A32774%2Fauth%2Fdiscord-callback&scope=identify
+              </a>
+            </p>
+          </div>
+
       {/if}
       
     </Nav>
