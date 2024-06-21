@@ -2,7 +2,8 @@ import { jwtDecode } from "jwt-decode";
 
 export async function load({ cookies}) {
 	const token = cookies.get('jwtToken');
-	console.log(`token: ${token}`)
+	const userId = cookies.get('userId');
+	const username = cookies.get('username');
 	const isLoggedIn = false;
 	const loginUrl = import.meta.env.VITE_REDIRECT_URI
 	const testUrl = `${import.meta.env.VITE_AUTH_URL}/TestMe`
@@ -15,5 +16,7 @@ export async function load({ cookies}) {
 		token,
 		testUrl,
 		authUrl,
+		userId,
+		username
 	};
 }

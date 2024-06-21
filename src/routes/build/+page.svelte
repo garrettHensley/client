@@ -100,8 +100,9 @@
         }
 
 
-        await fetch("/api/Build/Save", {
+        await fetch(`${import.meta.env.VITE_API_URL}/Build/Save`, {
             method: "POST",
+            credentials: 'include',
             headers: {
             "Content-Type": "application/json",
             // 'Content-Type': 'application/x-www-form-urlencoded',

@@ -28,25 +28,10 @@
   let userId = '';
   const loginUrl = data.loginUrl;
   
-  let code = $page.url.searchParams.get('code')
-  console.log(data)
-  
-  if (data.isLoggedIn) {
-    userName = data.userName;
+  if (data.username && data.userId) {
+    userName = data.username;
     userId = data.userId;
     loggedIn = true;
-  }
-
-  function testThing() {
-    // data.testCookie()
-    // console.log(data)
-  }
-  function handleUpdate(event) {
-    isOpen = event.detail.isOpen;
-  }
-
-  function login() {
-    window.location.href = data.loginUrl;
   }
 
   const testAuth = async () => {
@@ -141,26 +126,20 @@
   <NavbarToggler on:click={() => (isOpen = !isOpen)} />
     <Nav navbar>
       <NavItem>
-        <NavLink href="#components/">Explore</NavLink>
+        <NavLink href="/items">Items</NavLink>
       </NavItem>
       <NavItem>
         <NavLink href="#components/">My Stuff</NavLink>
       </NavItem>
       {#if loggedIn}
         <NavItem>
-          <NavLink href="/profile/{userId}">{userName}</NavLink>
+          <NavLink href="/profile/@me">{userName}</NavLink>
         </NavItem>
       
         {:else}
           <div>
             <p>
-              <a href="{loginUrl}">{loginUrl}</a>
-
-            </p>
-            <p>
-              <a href="https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A32774%2Fauth%2Fdiscord-callback&scope=identify">
-                https://discord.com/oauth2/authorize?client_id=1248372466682691717&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A32774%2Fauth%2Fdiscord-callback&scope=identify
-              </a>
+              <a href="{loginUrl}">login</a>
             </p>
           </div>
 
